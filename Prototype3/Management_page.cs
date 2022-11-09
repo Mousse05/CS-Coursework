@@ -14,7 +14,13 @@ namespace Prototype3
     {
         public Management_page()
         {
+            Database database = new Database();
+            database.Getorders();
             InitializeComponent();
+            object []order; 
+            Management_datagrid.Rows.Add();
+            
         }
+        
     }
 }

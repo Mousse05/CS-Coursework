@@ -52,7 +52,7 @@
             this.Management_datagrid.Name = "Management_datagrid";
             this.Management_datagrid.RowHeadersWidth = 62;
             this.Management_datagrid.RowTemplate.Height = 28;
-            this.Management_datagrid.Size = new System.Drawing.Size(813, 365);
+            this.Management_datagrid.Size = new System.Drawing.Size(1165, 546);
             this.Management_datagrid.TabIndex = 0;
             // 
             // Management_orderID

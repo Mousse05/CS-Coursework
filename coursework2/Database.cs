@@ -31,9 +31,9 @@ namespace Prototype3
             string Username = Register_page.Username;
             OleDbCommand command = new OleDbCommand($"SELECT User_ID FROM [User] WHERE Username = '{Username}'",Connectstring);
             Connectstring.Open();
-            int ID = command.ExecuteNonQuery ();
+            int ID = (int)command.ExecuteScalar();
             Connectstring.Close();
-            if (ID == 1)
+            if (ID == 0)
             {
                 Register();
                 
@@ -48,7 +48,7 @@ namespace Prototype3
 
 
         }
-        public string Login()
+        public void Login()//make into function 
         {
             string Username = Login_page.Username;
             string Password = Login_page.Password;
@@ -71,7 +71,6 @@ namespace Prototype3
                 
             }
             Connectstring.Close();
-            return null;
 
             
         }
@@ -82,19 +81,11 @@ namespace Prototype3
             DateTime Time = Order_page.Time;
             int ID = GetuserID();
             OleDbCommand command = new OleDbCommand($"INSERT INTO [Order](User_ID,info,Order_date ) VALUES ('{ID}' , '{Info}', '{Time}')", Connectstring);
-            OleDbCommand commandE = new OleDbCommand($"INSERT INTO [User](Email) VALUSE ('{Email}')", Connectstring); 
+            OleDbCommand commandE = new OleDbCommand($"INSERT INTO [User](Email) VALUSE ('{Email}') WHERE User_ID = ({ID})", Connectstring); 
             Connectstring.Open();
             command.ExecuteNonQuery();
             commandE.ExecuteNonQuery();
             Connectstring.Close();
-        }
-        public void Declineorder()
-        {
-
-        }
-        public void Checkorder()
-        {
-
         }
         public int GetuserID()
         {

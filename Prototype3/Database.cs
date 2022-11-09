@@ -31,23 +31,23 @@ namespace Prototype3
             string Username = Register_page.Username;
             OleDbCommand command = new OleDbCommand($"SELECT User_ID FROM [User] WHERE Username = '{Username}'",Connectstring);
             Connectstring.Open();
-            int ID = command.ExecuteNonQuery ();
+            int ID = (int)command.ExecuteScalar();
             Connectstring.Close();
-            if (ID == 1)
+            if (ID == 0)
             {
-                MessageBox.Show("the username is taken");//test
+                Register();
                 return false;
             }
             else
             {   
-                Register();
+                MessageBox.Show("the username is taken");//test
                 return true;
             }
 
 
 
         }
-        public string Login()
+        public void Login()//change into a function 
         {
             string Username = Login_page.Username;
             string Password = Login_page.Password;
@@ -61,6 +61,7 @@ namespace Prototype3
                 
                 if (Output == Password)
                 {
+                    MessageBox.Show("login ok");
                     Main_page.Username = Username;
                     Login_page.Valid = true;
                 }
@@ -71,7 +72,6 @@ namespace Prototype3
                 
             }
             Connectstring.Close();
-            return null;
 
             
         }
@@ -127,14 +127,51 @@ namespace Prototype3
         }
         public void Getorders()
         {
-            int ID = GetuserID();
-            OleDbCommand command = new OleDbCommand($"SELECT * FROM [Order]", Connectstring);
+            OleDbCommand command = new OleDbCommand($"SELECT COUNT(*) FROM [Order]", Connectstring);
             Connectstring.Open();
             OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            int rowcount=1;
+            int i = 0;
+            string[][] table = new string[rowcount][];
+            string[] order = new string[6];
+            try
             {
-
+                while (reader.Read())
+                {
+                order[0] = reader["Order_ID"].ToString();
+                /*order[1] = reader.GetString(1);
+                order[2] = reader.GetString(2);
+                order[3] = reader.GetDateTime(3);
+                order[4] = reader.GetBoolean(4);
+                order[5] = reader.GetBoolean(5);
+                */
+                table[i] = order;
+                //i++;
+                }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+           
+           /* foreach (string[] row in table)
+            {
+                System.Diagnostics.Debug.WriteLine(Convert.ToString(row[0]),(row[1]));//test
+            }*/
+                
+            Connectstring.Close();
+            
+        }
+        public void Updateinfo()
+        {
+            string Username = Settings_page.Username;
+            string Password = Settings_page.Password;
+            string Email = Settings_page.Email;
+            int UserID = GetuserID();
+            OleDbCommand command = new OleDbCommand($"UPDATE [User] where UserID = {UserID} SET [Username] = '{Username}',[Password] = '{Password}',[Email] = '{Email}'",Connectstring);
+            Connectstring.Open();
+            command.ExecuteNonQuery();
+            Connectstring.Close();
         }
     }
 }

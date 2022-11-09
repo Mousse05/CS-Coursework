@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Settings_priority = new System.Windows.Forms.Label();
+            this.Settings_update = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Settings_username
@@ -108,15 +109,25 @@
             this.Settings_priority.Location = new System.Drawing.Point(228, 175);
             this.Settings_priority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Settings_priority.Name = "Settings_priority";
-            this.Settings_priority.Size = new System.Drawing.Size(51, 20);
+            this.Settings_priority.Size = new System.Drawing.Size(0, 20);
             this.Settings_priority.TabIndex = 8;
-            this.Settings_priority.Text = "label5";
+            // 
+            // Settings_update
+            // 
+            this.Settings_update.Location = new System.Drawing.Point(317, 163);
+            this.Settings_update.Name = "Settings_update";
+            this.Settings_update.Size = new System.Drawing.Size(75, 32);
+            this.Settings_update.TabIndex = 9;
+            this.Settings_update.Text = "Update";
+            this.Settings_update.UseVisualStyleBackColor = true;
+            this.Settings_update.Click += new System.EventHandler(this.Settings_update_Click);
             // 
             // Settings_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 692);
+            this.Controls.Add(this.Settings_update);
             this.Controls.Add(this.Settings_priority);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -144,5 +155,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Settings_priority;
+        private System.Windows.Forms.Button Settings_update;
     }
 }

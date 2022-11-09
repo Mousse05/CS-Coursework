@@ -31,5 +31,15 @@ namespace Prototype3
             Settings_email.Text = Email;
             Settings_priority.Text = Priority;
         }
+
+        private void Settings_update_Click(object sender, EventArgs e)
+        {
+            Username = Settings_username.Text;
+            Password = Settings_password.Text;
+            Email = Settings_email.Text;
+            Priority = Settings_priority.Text;
+            Database Update = new Database();
+            Update.Updateinfo();
+        }
     }
 }

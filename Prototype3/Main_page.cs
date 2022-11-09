@@ -21,7 +21,7 @@ namespace Prototype3
 
         private void Main_page_Load(object sender, EventArgs e)
         {
-            if (Priovity == null)
+           /*if (Priovity == null)
             {
                 Main_management.Visible = false;
             }
@@ -34,7 +34,7 @@ namespace Prototype3
             {
                 Main_login.Text = "Settings";
                 Main_Welcome.Text = "welcome \n" + Username;
-            }
+            }*/
         }
 
         private void Main_management_Click(object sender, EventArgs e)

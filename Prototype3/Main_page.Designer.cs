@@ -32,13 +32,15 @@
             this.Main_management = new System.Windows.Forms.Button();
             this.Main_login = new System.Windows.Forms.Button();
             this.Main_Welcome = new System.Windows.Forms.Label();
+            this.Main_Mytasks = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Main_order
             // 
-            this.Main_order.Location = new System.Drawing.Point(117, 11);
+            this.Main_order.Location = new System.Drawing.Point(78, 7);
+            this.Main_order.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Main_order.Name = "Main_order";
-            this.Main_order.Size = new System.Drawing.Size(114, 35);
+            this.Main_order.Size = new System.Drawing.Size(76, 23);
             this.Main_order.TabIndex = 0;
             this.Main_order.Text = "Order";
             this.Main_order.UseVisualStyleBackColor = true;
@@ -46,9 +48,10 @@
             // 
             // Main_management
             // 
-            this.Main_management.Location = new System.Drawing.Point(237, 11);
+            this.Main_management.Location = new System.Drawing.Point(158, 7);
+            this.Main_management.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Main_management.Name = "Main_management";
-            this.Main_management.Size = new System.Drawing.Size(122, 35);
+            this.Main_management.Size = new System.Drawing.Size(81, 23);
             this.Main_management.TabIndex = 1;
             this.Main_management.Text = "Management";
             this.Main_management.UseVisualStyleBackColor = true;
@@ -56,9 +59,10 @@
             // 
             // Main_login
             // 
-            this.Main_login.Location = new System.Drawing.Point(690, 8);
+            this.Main_login.Location = new System.Drawing.Point(460, 5);
+            this.Main_login.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Main_login.Name = "Main_login";
-            this.Main_login.Size = new System.Drawing.Size(98, 35);
+            this.Main_login.Size = new System.Drawing.Size(65, 23);
             this.Main_login.TabIndex = 2;
             this.Main_login.Text = "Login";
             this.Main_login.UseVisualStyleBackColor = true;
@@ -67,21 +71,33 @@
             // Main_Welcome
             // 
             this.Main_Welcome.AutoSize = true;
-            this.Main_Welcome.Location = new System.Drawing.Point(20, 18);
+            this.Main_Welcome.Location = new System.Drawing.Point(13, 12);
+            this.Main_Welcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Main_Welcome.Name = "Main_Welcome";
-            this.Main_Welcome.Size = new System.Drawing.Size(71, 20);
+            this.Main_Welcome.Size = new System.Drawing.Size(49, 13);
             this.Main_Welcome.TabIndex = 3;
             this.Main_Welcome.Text = "welcome";
             // 
+            // Main_Mytasks
+            // 
+            this.Main_Mytasks.Location = new System.Drawing.Point(244, 7);
+            this.Main_Mytasks.Name = "Main_Mytasks";
+            this.Main_Mytasks.Size = new System.Drawing.Size(75, 23);
+            this.Main_Mytasks.TabIndex = 4;
+            this.Main_Mytasks.Text = "My Tasks";
+            this.Main_Mytasks.UseVisualStyleBackColor = true;
+            // 
             // Main_page
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.Main_Mytasks);
             this.Controls.Add(this.Main_Welcome);
             this.Controls.Add(this.Main_login);
             this.Controls.Add(this.Main_management);
             this.Controls.Add(this.Main_order);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main_page";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Main_page_Load);
@@ -96,6 +112,7 @@
         private System.Windows.Forms.Button Main_management;
         private System.Windows.Forms.Button Main_login;
         private System.Windows.Forms.Label Main_Welcome;
+        private System.Windows.Forms.Button Main_Mytasks;
     }
 }
 
