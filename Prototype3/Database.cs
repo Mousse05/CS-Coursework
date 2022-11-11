@@ -29,7 +29,7 @@ namespace Prototype3
         {
 
             string Username = Register_page.Username;
-            OleDbCommand command = new OleDbCommand($"SELECT User_ID FROM [User] WHERE Username = '{Username}'",Connectstring);
+            OleDbCommand command = new OleDbCommand($"SELECT COUNT(Username) FROM [User] WHERE Username = '{Username}'", Connectstring);
             Connectstring.Open();
             int ID = (int)command.ExecuteScalar();
             Connectstring.Close();
@@ -43,9 +43,6 @@ namespace Prototype3
                 MessageBox.Show("the username is taken");//test
                 return true;
             }
-
-
-
         }
         public void Login()//change into a function 
         {
@@ -82,7 +79,7 @@ namespace Prototype3
             DateTime Time = Order_page.Time;
             int ID = GetuserID();
             OleDbCommand command = new OleDbCommand($"INSERT INTO [Order](User_ID,info,Order_date ) VALUES ('{ID}' , '{Info}', '{Time}')", Connectstring);
-            OleDbCommand commandE = new OleDbCommand($"INSERT INTO [User](Email) VALUSE ('{Email}')", Connectstring); 
+            OleDbCommand commandE = new OleDbCommand($"UPDATE [User] SET [Email] = '{Email}' WHERE User_ID = { ID }", Connectstring); 
             Connectstring.Open();
             command.ExecuteNonQuery();
             commandE.ExecuteNonQuery();
@@ -125,41 +122,41 @@ namespace Prototype3
             }
             Connectstring.Close();
         }
-        public void Getorders()
+        public object Getorders()
         {
-            OleDbCommand command = new OleDbCommand($"SELECT COUNT(*) FROM [Order]", Connectstring);
+            OleDbCommand command = new OleDbCommand($"SELECT * FROM [Order]", Connectstring);
+            OleDbCommand command1 = new OleDbCommand($"SELECT COUNT(*) FROM [Order]", Connectstring);
             Connectstring.Open();
             OleDbDataReader reader = command.ExecuteReader();
-            int rowcount=1;
+            int rowcount = (int)command1.ExecuteScalar();
             int i = 0;
-            string[][] table = new string[rowcount][];
-            string[] order = new string[6];
+            Object[][] AddToDGV = new Object[rowcount][];//jagged arry to store the whole table form the databse 
+            //array for row that is being looked at
             try
             {
                 while (reader.Read())
                 {
-                order[0] = reader["Order_ID"].ToString();
-                /*order[1] = reader.GetString(1);
-                order[2] = reader.GetString(2);
-                order[3] = reader.GetDateTime(3);
-                order[4] = reader.GetBoolean(4);
-                order[5] = reader.GetBoolean(5);
-                */
-                table[i] = order;
-                //i++;
+                Object[] AddToArray = new Object[6];//adds the valuse form a row to the AddToArray array 
+                AddToArray[0] = reader["Order_ID"];
+                AddToArray[1] = reader["User_ID"];
+                AddToArray[2] = reader["Info"];
+                AddToArray[3] = reader["Order_date"];
+                AddToArray[4] = reader["Accepted"];
+                AddToArray[5] = reader["Delivered"];
+                
+                AddToDGV[i] = AddToArray;//AddToArray arry is added to AddToDGV jagged array
+                i++;
                 }
+                Connectstring.Close();
+                return AddToDGV;
             }
-            catch (Exception e)
+            catch (Exception e)// catches error 
             {
                 MessageBox.Show(e.ToString());
+                return null;
             }
-           
-           /* foreach (string[] row in table)
-            {
-                System.Diagnostics.Debug.WriteLine(Convert.ToString(row[0]),(row[1]));//test
-            }*/
                 
-            Connectstring.Close();
+            
             
         }
         public void Updateinfo()

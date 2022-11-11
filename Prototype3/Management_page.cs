@@ -14,12 +14,15 @@ namespace Prototype3
     {
         public Management_page()
         {
-            Database database = new Database();
-            database.Getorders();
             InitializeComponent();
-            object []order; 
-            Management_datagrid.Rows.Add();
+            Database database = new Database();
+            object [][] AddToDGV = (object[][])database.Getorders();
             
+            for (int i = 0; i < AddToDGV.Length; i++)
+            {
+                Management_datagrid.Rows.Add(AddToDGV[i]);
+
+            }
         }
         
     }

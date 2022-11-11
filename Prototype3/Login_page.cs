@@ -34,13 +34,14 @@ namespace Prototype3
                 //MessageBox.Show("good job");//test
                 Database Log = new Database();
                 Log.Login();//runs the register method 
-                Database ID = new Database();
-                ID.GetuserID();
+                
                 if (Valid == true)
                 {
                     var Main_page = new Main_page();
                     Main_page.Show();
                     this.Hide();
+                    Database ID = new Database();
+                    ID.GetuserID();
                 }
                 else if (Valid == false)
                 {

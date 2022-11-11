@@ -36,7 +36,6 @@ namespace Prototype3
             if (ID == 0)
             {
                 Register();
-                
                 return false;
             }
             else

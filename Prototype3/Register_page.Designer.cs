@@ -51,22 +51,22 @@
             this.Register_password.Location = new System.Drawing.Point(286, 95);
             this.Register_password.Name = "Register_password";
             this.Register_password.Size = new System.Drawing.Size(186, 26);
-            this.Register_password.TabIndex = 1;
+            this.Register_password.TabIndex = 2;
             // 
             // Register_password2
             // 
             this.Register_password2.Location = new System.Drawing.Point(286, 142);
             this.Register_password2.Name = "Register_password2";
             this.Register_password2.Size = new System.Drawing.Size(186, 26);
-            this.Register_password2.TabIndex = 2;
+            this.Register_password2.TabIndex = 3;
             // 
             // Regester_regester
             // 
             this.Regester_regester.Location = new System.Drawing.Point(319, 188);
             this.Regester_regester.Name = "Regester_regester";
             this.Regester_regester.Size = new System.Drawing.Size(120, 45);
-            this.Regester_regester.TabIndex = 3;
-            this.Regester_regester.Text = "Regester";
+            this.Regester_regester.TabIndex = 4;
+            this.Regester_regester.Text = "Register";
             this.Regester_regester.UseVisualStyleBackColor = true;
             this.Regester_regester.Click += new System.EventHandler(this.Regester_regester_Click);
             // 
@@ -76,7 +76,7 @@
             this.Register_surname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Register_surname.Name = "Register_surname";
             this.Register_surname.Size = new System.Drawing.Size(186, 26);
-            this.Register_surname.TabIndex = 4;
+            this.Register_surname.TabIndex = 1;
             // 
             // label1
             // 
