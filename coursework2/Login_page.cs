@@ -35,7 +35,7 @@ namespace Prototype3
                 Database Log = new Database();
                 Log.Login();//runs the register method 
                 Database ID = new Database();
-                ID.GetuserID();
+                ID.GetUserID();
                 if (Valid == true)
                 {
                     var Main_page = new Main_page();

@@ -36,8 +36,8 @@ namespace Prototype3
                 Email = Order_email.Text;
                 Info = Order_info.Text;
                 Time = DateTime.Now;
-                Database Addorder = new Database();
-                Addorder.Addorder();
+                Database AddOrder = new Database();
+                AddOrder.AddOrder();
             }
         }
     }

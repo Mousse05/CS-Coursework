@@ -50,7 +50,6 @@ namespace Prototype3
             Order_page.Show();//opens the order page form
             this.Hide();// hides the main form 
         }
-
         private void Main_login_Click(object sender, EventArgs e)
         {
             if (Username == null)
@@ -64,8 +63,21 @@ namespace Prototype3
                 var Settings_page = new Settings_page();
                 Settings_page.Show();
                 this.Hide();
+                
             }
             
+        }
+
+        private void Main_IT_Click(object sender, EventArgs e)
+        {
+            var IT_page = new IT_page();
+            IT_page.Show();
+            this.Hide();
+        }
+
+        private void Main_Mytasks_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

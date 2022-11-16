@@ -25,7 +25,7 @@ namespace Prototype3
         private void Settings_page_Load(object sender, EventArgs e)
         {
             Database Settings = new Database();
-            Settings.Getcurrentsettings();
+            Settings.GetCurrentSettings();
             Settings_username.Text = Username;
             Settings_password.Text = Password;
             Settings_email.Text = Email;
@@ -39,7 +39,7 @@ namespace Prototype3
             Email = Settings_email.Text;
             Priority = Settings_priority.Text;
             Database Update = new Database();
-            Update.Updateinfo();
+            Update.UpdateInfo();
         }
     }
 }

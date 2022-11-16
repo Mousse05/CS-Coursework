@@ -41,7 +41,7 @@ namespace Prototype3
                     Main_page.Show();
                     this.Hide();
                     Database ID = new Database();
-                    ID.GetuserID();
+                    ID.GetUserID();
                 }
                 else if (Valid == false)
                 {

@@ -25,7 +25,7 @@ namespace Prototype3
             command.ExecuteNonQuery();
             Connectstring.Close();
         }
-        public bool Is_username_taken()
+        public bool Is_Username_Taken()
         {
 
             string Username = Register_page.Username;
@@ -73,12 +73,12 @@ namespace Prototype3
 
             
         }
-        public void Addorder()
+        public void AddOrder()
         {
             string Email = Order_page.Email;
             string Info = Order_page.Info;
             DateTime Time = Order_page.Time;
-            int ID = GetuserID();
+            int ID = GetUserID();
             OleDbCommand command = new OleDbCommand($"INSERT INTO [Order](User_ID,info,Order_date ) VALUES ('{ID}' , '{Info}', '{Time}')", Connectstring);
             OleDbCommand commandE = new OleDbCommand($"INSERT INTO [User](Email) VALUSE ('{Email}') WHERE User_ID = ({ID})", Connectstring); 
             Connectstring.Open();
@@ -86,7 +86,7 @@ namespace Prototype3
             commandE.ExecuteNonQuery();
             Connectstring.Close();
         }
-        public int GetuserID()
+        public int GetUserID()
         {
             string Username = Login_page.Username;
             OleDbCommand command = new OleDbCommand($"SELECT User_ID FROM [User] WHERE Username = '{Username}'", Connectstring);
