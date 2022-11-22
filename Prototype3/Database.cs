@@ -80,9 +80,20 @@ namespace Prototype3
             int ID = GetUserID();
             OleDbCommand command = new OleDbCommand($"INSERT INTO [Order](User_ID,info,Order_date ) VALUES ('{ID}' , '{Info}', '{Time}')", Connectstring);
             OleDbCommand commandE = new OleDbCommand($"UPDATE [User] SET [Email] = '{Email}' WHERE User_ID = {ID}", Connectstring);
+            OleDbCommand Command1 = new OleDbCommand($"SELECT [Order_ID] FROM [Order] WHERE User_ID = {ID}", Connectstring);
             Connectstring.Open();
             command.ExecuteNonQuery();
             commandE.ExecuteNonQuery();
+            int OrderID = (int)Command1.ExecuteScalar();
+            OleDbCommand command2 = new OleDbCommand($"INSERT INTO [Tasks] (Team_ID,Order_ID) VALUES ({1},'{OrderID}')", Connectstring);
+            command2.ExecuteNonQuery();
+            Connectstring.Close();
+        }
+        public void AcceptOrder(string OrderID)
+        {
+            OleDbCommand command = new OleDbCommand($"UPDATE [Order] SET [Accepted] = {true} WHERE Order_ID = {OrderID}", Connectstring);
+            Connectstring.Open();
+            command.ExecuteNonQuery();
             Connectstring.Close();
         }
         public void CheckMyOrder()
@@ -121,7 +132,12 @@ namespace Prototype3
             string Username = Login_page.Username;
             OleDbCommand command = new OleDbCommand($"SELECT User_ID FROM [User] WHERE Username = '{Username}'", Connectstring);
             Connectstring.Open();
-            int ID = (int)command.ExecuteScalar();
+            OleDbDataReader reader = command.ExecuteReader();
+            int ID = 0;
+            while (reader.Read())
+            {
+                ID = (int)reader[0];
+            }
             Connectstring.Close();
             //MessageBox.Show(ID.ToString()); test
             return ID;
@@ -131,6 +147,7 @@ namespace Prototype3
             int ID = GetUserID();
             OleDbCommand command = new OleDbCommand($"SELECT * FROM [User] WHERE USER_ID = {ID}", Connectstring);
             Connectstring.Open();
+            //command.Parameters.AddWithValue("@par", "Name"); pramitesed query
             OleDbDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -141,9 +158,36 @@ namespace Prototype3
             }
             Connectstring.Close();
         }
-        public object GetValues(string Tablename,string[] ColumnName)
+        public object[] GetOrder(string OrderID)
         {
-            OleDbCommand command = new OleDbCommand($"SELECT * FROM [{Tablename}]", Connectstring);
+        OleDbCommand Command = new OleDbCommand($"SELECT * FROM [Order] WHERE Order_ID = {OrderID}", Connectstring);
+            Connectstring.Open();
+            OleDbDataReader reader = Command.ExecuteReader();
+            while (reader.Read())
+            {//adds the valuse form a row to the AddToArray array 
+                object[] AddToArray = new object[6];// 6 is how many columns are in the table
+                for (int i = 0; i < 6; i++)
+                {//adds the data to the array
+                    AddToArray[i] = reader[i];
+                }
+                Connectstring.Close();
+                return AddToArray;
+            }
+            return null;
+        }
+ 
+        public object GetValues(string Tablename,string[] ColumnName, int? ID)
+        {
+            OleDbCommand command;
+            if (ID == null)
+            {
+                 command = new OleDbCommand($"SELECT * FROM [{Tablename}]", Connectstring);
+            }
+            else
+            {
+                 command = new OleDbCommand($"SELECT * FROM [{Tablename}] WHERE Team_ID = {ID}", Connectstring);
+            }
+            
             OleDbCommand command1 = new OleDbCommand($"SELECT COUNT(*) FROM [{Tablename}]", Connectstring);
             Connectstring.Open();
             OleDbDataReader reader = command.ExecuteReader();
@@ -154,13 +198,14 @@ namespace Prototype3
             try
             {
                 while (reader.Read())
-                {
-                    object[] AddToArray = new object[ColumnName.Length];//adds the valuse form a row to the AddToArray array 
+                {//adds the valuse form a row to the AddToArray array 
+                    object[] AddToArray = new object[ColumnName.Length];
                     for (int j = 0; j < ColumnName.Length; j++)
                     {
                         AddToArray[j] = reader[j];
                     }
-                AddToDGV[i] = AddToArray;//AddToArray arry is added to AddToDGV jagged array
+                //AddToArray arry is added to AddToDGV jagged array
+                AddToDGV[i] = AddToArray;
                 i++;
                 }
                 Connectstring.Close();
@@ -185,6 +230,29 @@ namespace Prototype3
             Connectstring.Open();
             command.ExecuteNonQuery();
             Connectstring.Close();
+        }
+        public void AddFile(string Filepath, int OrderID)
+        {
+            OleDbCommand command = new OleDbCommand($"UPDATE [Tasks] SET [Saved_File] = '{Filepath}'WHERE Order_ID = {OrderID}", Connectstring);
+            Connectstring.Open();
+            command.ExecuteNonQuery();
+            Connectstring.Close();
+        }
+        public int TeamID()
+        {
+            Database database = new Database();
+            int UserID = database.GetUserID();
+            OleDbCommand command = new OleDbCommand($"SELECT Team_ID FROM [Teams] WHERE User_ID = {UserID}", Connectstring);
+            Connectstring.Open();
+            //int TeamID = (int)command.ExecuteScalar();
+            OleDbDataReader reader = command.ExecuteReader();
+            int TeamID = 0;
+            while (reader.Read())
+            {
+                 TeamID = (int)reader[0];
+            }
+            Connectstring.Close();
+            return TeamID;
         }
     }
 }

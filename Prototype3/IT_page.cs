@@ -15,21 +15,6 @@ namespace Prototype3
         public IT_page()
         {
             InitializeComponent();
-
-            Database database = new Database();
-
-            string[] ColumnName = new string[IT_datagrid.ColumnCount];
-            for (int i = 0; i < ColumnName.Length; i++)
-            {
-                ColumnName[i] = IT_datagrid.Columns[i].Name;
-            }
-
-            object[][] AddToDGV = (object[][])database.GetValues("User", ColumnName);
-
-            for (int i = 0; i < AddToDGV.Length; i++)
-            {
-                IT_datagrid.Rows.Add(AddToDGV[i]);//adds the jagged array to the datagridview
-            }
         }
 
         private void IT_save_Click(object sender, EventArgs e)
@@ -50,8 +35,44 @@ namespace Prototype3
                 }
                 AddToDatabase[rows] = AddToArray;
             }
+            string Tablename = IT_comboBox.Text;
             Database database = new Database();
-            database.UpdateTable(AddToDatabase, ColumName,"User");
+            database.UpdateTable(AddToDatabase, ColumName, Tablename);
+        }
+
+        private void IT_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string Tablename = IT_comboBox.Text;
+            if (Tablename == "Tasks")
+            {
+                IT_datagrid.Columns.Clear();
+                IT_datagrid.Columns.Add(Team_ID);
+                IT_datagrid.Columns.Add(User_ID);
+            }
+            else if(Tablename == "User")
+            {
+                IT_datagrid.Columns.Clear();
+                IT_datagrid.Columns.Add(User_ID);
+                IT_datagrid.Columns.Add(Username);
+                IT_datagrid.Columns.Add(Password);
+                IT_datagrid.Columns.Add(Email);
+                IT_datagrid.Columns.Add(Priority);
+            }
+
+            Database database = new Database();
+            string[] ColumnName = new string[IT_datagrid.ColumnCount];
+            for (int i = 0; i < ColumnName.Length; i++)
+            {
+                ColumnName[i] = IT_datagrid.Columns[i].Name;
+            }
+
+            object[][] AddToDGV = (object[][])database.GetValues(Tablename, ColumnName, null);
+
+            for (int i = 0; i < AddToDGV.Length; i++)
+            {
+                IT_datagrid.Rows.Add(AddToDGV[i]);//adds the jagged array to the datagridview
+            }
+
         }
     }
 }

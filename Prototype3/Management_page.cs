@@ -34,8 +34,9 @@ namespace Prototype3
                 }
                 AddToDatabase[rows] = AddToArray;//adds the array to jagged array
             }
+            string Tablename = Managemnet_comboBox.Text;
             Database database = new Database();
-            database.UpdateTable(AddToDatabase,ColumName,"Order");
+            database.UpdateTable(AddToDatabase,ColumName, Tablename);
         }
 
         private void Managemnet_comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace Prototype3
              }
 
             //Sends TAbleName and ColmnName as prameters and gets the jaggered array with the data in return
-            object [][] AddToDGV = (object[][])database.GetValues(Tablename,ColumnName);
+            object [][] AddToDGV = (object[][])database.GetValues(Tablename,ColumnName,null);
 
             //Adds the Jagged Array to the Datagridview
             for (int i = 0; i < AddToDGV.Length; i++)

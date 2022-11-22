@@ -30,6 +30,8 @@
         {
             this.IT_datagrid = new System.Windows.Forms.DataGridView();
             this.IT_save = new System.Windows.Forms.Button();
+            this.IT_comboBox = new System.Windows.Forms.ComboBox();
+            this.Team_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +46,7 @@
             this.IT_datagrid.AllowUserToDeleteRows = false;
             this.IT_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.IT_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Team_ID,
             this.User_ID,
             this.Username,
             this.Password,
@@ -65,6 +68,25 @@
             this.IT_save.Text = "Save";
             this.IT_save.UseVisualStyleBackColor = true;
             this.IT_save.Click += new System.EventHandler(this.IT_save_Click);
+            // 
+            // IT_comboBox
+            // 
+            this.IT_comboBox.FormattingEnabled = true;
+            this.IT_comboBox.Items.AddRange(new object[] {
+            "Tasks",
+            "User"});
+            this.IT_comboBox.Location = new System.Drawing.Point(154, 345);
+            this.IT_comboBox.Name = "IT_comboBox";
+            this.IT_comboBox.Size = new System.Drawing.Size(121, 28);
+            this.IT_comboBox.TabIndex = 13;
+            this.IT_comboBox.SelectedIndexChanged += new System.EventHandler(this.IT_comboBox_SelectedIndexChanged);
+            // 
+            // Team_ID
+            // 
+            this.Team_ID.HeaderText = "Team ID";
+            this.Team_ID.MinimumWidth = 8;
+            this.Team_ID.Name = "Team_ID";
+            this.Team_ID.Width = 150;
             // 
             // User_ID
             // 
@@ -108,6 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 450);
+            this.Controls.Add(this.IT_comboBox);
             this.Controls.Add(this.IT_save);
             this.Controls.Add(this.IT_datagrid);
             this.Name = "IT_page";
@@ -121,6 +144,8 @@
 
         private System.Windows.Forms.DataGridView IT_datagrid;
         private System.Windows.Forms.Button IT_save;
+        private System.Windows.Forms.ComboBox IT_comboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Team_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn User_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;

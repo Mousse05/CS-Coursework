@@ -87,6 +87,12 @@
     <Compile Include="Management_page.Designer.cs">
       <DependentUpon>Management_page.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mytask_page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mytask_page.Designer.cs">
+      <DependentUpon>Mytask_page.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order_page.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Management_page.resx">
       <DependentUpon>Management_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mytask_page.resx">
+      <DependentUpon>Mytask_page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order_page.resx">
       <DependentUpon>Order_page.cs</DependentUpon>

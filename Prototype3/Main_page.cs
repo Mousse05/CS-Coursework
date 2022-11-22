@@ -77,7 +77,9 @@ namespace Prototype3
 
         private void Main_Mytasks_Click(object sender, EventArgs e)
         {
-
+            var Mytask_page = new Mytask_page();
+            Mytask_page.Show();
+            this.Hide();
         }
     }
 }
