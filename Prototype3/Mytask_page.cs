@@ -54,6 +54,19 @@ namespace Prototype3
         private void Mytask_refresh_Click(object sender, EventArgs e)
         {
             // add two new columns to the order table and management data grid
+
+        }
+
+        private void Mytask_Complete_Click(object sender, EventArgs e)
+        {
+            Database database = new Database();
+            int TeamID = 1 + database.TeamID();
+            int TaskID = int.Parse(Mytask_taskID.Text);;
+            database.TaskComplete(TeamID,TaskID);
+            /* task ID 1 for manager 
+             * TAsk ID 2 fir programering / deseing team 
+             * task ID 3 acounting team basicly payment price
+             */
         }
     }
 }

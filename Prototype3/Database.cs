@@ -84,7 +84,7 @@ namespace Prototype3
             Connectstring.Open();
             command.ExecuteNonQuery();
             commandE.ExecuteNonQuery();
-            int OrderID = (int)Command1.ExecuteScalar();
+            int OrderID = (int)Command1.ExecuteScalar();//change it broken
             OleDbCommand command2 = new OleDbCommand($"INSERT INTO [Tasks] (Team_ID,Order_ID) VALUES ({1},'{OrderID}')", Connectstring);
             command2.ExecuteNonQuery();
             Connectstring.Close();
@@ -95,6 +95,31 @@ namespace Prototype3
             Connectstring.Open();
             command.ExecuteNonQuery();
             Connectstring.Close();
+        }
+        public void TaskComplete(int TeamID, int Tasks)
+        {
+            if(TeamID < 4)
+            {
+                OleDbCommand command = new OleDbCommand($"UPDATE [Task] SET Team_ID = {TeamID} WHERE TASK = {Tasks}", Connectstring);
+                Connectstring.Open();
+                command.ExecuteNonQuery();
+                Connectstring.Close();
+            }
+            else
+            {
+                MessageBox.Show("Go set the price of the product");
+            }
+            
+        }
+        public string GetCommunication(int OrderID,string field)
+        {
+            OleDbCommand command = new OleDbCommand($"SELCT [{field}] FORM [Order] WHERE Order_ID ={OrderID}", Connectstring);
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                return reader.GetString(0);
+            }
+            return null;
         }
         public void CheckMyOrder()
         {
@@ -215,10 +240,7 @@ namespace Prototype3
             {
                 MessageBox.Show(e.ToString());
                 return null;
-            }
-                
-            
-            
+            }   
         }
         public void UpdateInfo()
         {

@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.Mytask_dataGridView = new System.Windows.Forms.DataGridView();
-            this.Tasks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Team_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Order_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Saved_File = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mytask_panelorder = new System.Windows.Forms.Panel();
             this.Mytask_info = new System.Windows.Forms.TextBox();
             this.Mytask_delivered = new System.Windows.Forms.CheckBox();
@@ -42,6 +38,10 @@
             this.Mytask_OrderID = new System.Windows.Forms.TextBox();
             this.Mytask_search = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Mytask_taskID = new System.Windows.Forms.TextBox();
+            this.Mytask_Complete = new System.Windows.Forms.Button();
+            this.Mytask_InfoID = new System.Windows.Forms.TextBox();
             this.Mytask_refresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.Mytask_acceptorder = new System.Windows.Forms.Button();
@@ -50,7 +50,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Mytask_employeeinfo = new System.Windows.Forms.TextBox();
             this.Mytask_customerinfo = new System.Windows.Forms.TextBox();
-            this.Mytask_InfoID = new System.Windows.Forms.TextBox();
+            this.Tasks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Team_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Mytask_dataGridView)).BeginInit();
             this.Mytask_panelorder.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,42 +64,13 @@
             this.Mytask_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tasks,
             this.Team_ID,
-            this.Order_ID,
-            this.Saved_File});
+            this.Order_ID});
             this.Mytask_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.Mytask_dataGridView.Name = "Mytask_dataGridView";
             this.Mytask_dataGridView.RowHeadersWidth = 62;
             this.Mytask_dataGridView.RowTemplate.Height = 28;
             this.Mytask_dataGridView.Size = new System.Drawing.Size(814, 715);
             this.Mytask_dataGridView.TabIndex = 0;
-            // 
-            // Tasks
-            // 
-            this.Tasks.HeaderText = "Tasks";
-            this.Tasks.MinimumWidth = 8;
-            this.Tasks.Name = "Tasks";
-            this.Tasks.Width = 150;
-            // 
-            // Team_ID
-            // 
-            this.Team_ID.HeaderText = "Team_ID";
-            this.Team_ID.MinimumWidth = 8;
-            this.Team_ID.Name = "Team_ID";
-            this.Team_ID.Width = 150;
-            // 
-            // Order_ID
-            // 
-            this.Order_ID.HeaderText = "Order_ID";
-            this.Order_ID.MinimumWidth = 8;
-            this.Order_ID.Name = "Order_ID";
-            this.Order_ID.Width = 150;
-            // 
-            // Saved_File
-            // 
-            this.Saved_File.HeaderText = "Saved_File";
-            this.Saved_File.MinimumWidth = 8;
-            this.Saved_File.Name = "Saved_File";
-            this.Saved_File.Width = 150;
             // 
             // Mytask_panelorder
             // 
@@ -179,6 +152,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.Mytask_taskID);
+            this.panel2.Controls.Add(this.Mytask_Complete);
             this.panel2.Controls.Add(this.Mytask_InfoID);
             this.panel2.Controls.Add(this.Mytask_refresh);
             this.panel2.Controls.Add(this.label4);
@@ -193,6 +169,39 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(585, 477);
             this.panel2.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(39, 424);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Task ID";
+            // 
+            // Mytask_taskID
+            // 
+            this.Mytask_taskID.Location = new System.Drawing.Point(123, 424);
+            this.Mytask_taskID.Name = "Mytask_taskID";
+            this.Mytask_taskID.Size = new System.Drawing.Size(181, 26);
+            this.Mytask_taskID.TabIndex = 10;
+            // 
+            // Mytask_Complete
+            // 
+            this.Mytask_Complete.Location = new System.Drawing.Point(310, 409);
+            this.Mytask_Complete.Name = "Mytask_Complete";
+            this.Mytask_Complete.Size = new System.Drawing.Size(264, 57);
+            this.Mytask_Complete.TabIndex = 3;
+            this.Mytask_Complete.Text = "Task Complete";
+            this.Mytask_Complete.UseVisualStyleBackColor = true;
+            this.Mytask_Complete.Click += new System.EventHandler(this.Mytask_Complete_Click);
+            // 
+            // Mytask_InfoID
+            // 
+            this.Mytask_InfoID.Location = new System.Drawing.Point(310, 39);
+            this.Mytask_InfoID.Name = "Mytask_InfoID";
+            this.Mytask_InfoID.Size = new System.Drawing.Size(125, 26);
+            this.Mytask_InfoID.TabIndex = 3;
             // 
             // Mytask_refresh
             // 
@@ -264,12 +273,26 @@
             this.Mytask_customerinfo.Size = new System.Drawing.Size(290, 291);
             this.Mytask_customerinfo.TabIndex = 3;
             // 
-            // Mytask_InfoID
+            // Tasks
             // 
-            this.Mytask_InfoID.Location = new System.Drawing.Point(310, 39);
-            this.Mytask_InfoID.Name = "Mytask_InfoID";
-            this.Mytask_InfoID.Size = new System.Drawing.Size(125, 26);
-            this.Mytask_InfoID.TabIndex = 3;
+            this.Tasks.HeaderText = "Tasks";
+            this.Tasks.MinimumWidth = 8;
+            this.Tasks.Name = "Tasks";
+            this.Tasks.Width = 150;
+            // 
+            // Team_ID
+            // 
+            this.Team_ID.HeaderText = "Team_ID";
+            this.Team_ID.MinimumWidth = 8;
+            this.Team_ID.Name = "Team_ID";
+            this.Team_ID.Width = 150;
+            // 
+            // Order_ID
+            // 
+            this.Order_ID.HeaderText = "Order_ID";
+            this.Order_ID.MinimumWidth = 8;
+            this.Order_ID.Name = "Order_ID";
+            this.Order_ID.Width = 150;
             // 
             // Mytask_page
             // 
@@ -301,10 +324,6 @@
         private System.Windows.Forms.Label Mytask_date;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Mytask_info;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tasks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Team_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Order_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Saved_File;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox Mytask_customerinfo;
         private System.Windows.Forms.Label label4;
@@ -315,5 +334,11 @@
         private System.Windows.Forms.TextBox Mytask_employeeinfo;
         private System.Windows.Forms.Button Mytask_refresh;
         private System.Windows.Forms.TextBox Mytask_InfoID;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox Mytask_taskID;
+        private System.Windows.Forms.Button Mytask_Complete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tasks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Team_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order_ID;
     }
 }
