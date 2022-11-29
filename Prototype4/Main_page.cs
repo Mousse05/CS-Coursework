@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prototype3
+namespace Prototype4
 {
     public partial class Main_page : Form
     {
-        public int Priority = 4;
+        public int Priority = 0;
         static public string Username = null;
         public Main_page()
         {
@@ -23,7 +23,7 @@ namespace Prototype3
         2 is for designers and developers
         3 is for managers
         4 is for acounts team
-        5 is for IT
+        4 is for IT
         */
         private void Main_page_Load(object sender, EventArgs e)
         {

@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
-namespace Prototype3
+namespace Prototype4
 {
     public class Database
     {
+        
         public OleDbConnection Connectstring;
 
         public Database()

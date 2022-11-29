@@ -1,4 +1,4 @@
-﻿namespace Prototype3
+﻿namespace Prototype4
 {
     partial class Management_page
     {
