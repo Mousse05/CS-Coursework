@@ -40,7 +40,10 @@ namespace Prototype4
                     Username = Forename.Substring(0, 3) + Surname.Substring(0, 5);// takes the forst three chracters from Forename and the first five from surname and combindes them
                     MessageBox.Show(Username);//test
                     Database Reg = new Database();
-                    Reg.Is_Username_Taken();//runs the is the username taken method
+                    Reg.Is_Username_Taken(Username,Password);//runs the is the username taken method
+                    var Main_page = new Main_page();
+                    Main_page.Show();
+                    this.Hide();
                 }
                 else
                 {

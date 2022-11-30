@@ -14,8 +14,8 @@ namespace Prototype4
     public partial class Login_page : Form
     {
         static public string Username;
-        static public string Password;
-        static public bool Valid;
+        public string Password;
+        public bool Valid;
         public Login_page()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Prototype4
                 Password = Login_password.Text.Trim();
                 //MessageBox.Show("good job");//test
                 Database Log = new Database();
-                Log.Login(Username,Password);//runs the register method 
+                Valid = Log.Login(Username,Password);//runs the register method 
                 
                 if (Valid == true)
                 {

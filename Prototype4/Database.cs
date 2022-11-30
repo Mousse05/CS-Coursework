@@ -18,27 +18,52 @@ namespace Prototype4
         {
             Connectstring = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/musa2/Documents/Sixforrm/CS/code/CS Coursework/Database/database.accdb");
         }
-        public void Register()
+        public string Hash(string Input)
         {
-            string Password = Register_page.Password;
-            string Username = Register_page.Username;
-            MessageBox.Show(Username);//test 
-            OleDbCommand command = new OleDbCommand($"INSERT INTO [User](Username,[Password]) VALUES ('{Username}' , '{Password}')", Connectstring);
+            // Generate the hash
+            //Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes.create//(input, salt, iterations: 5000);
+            SHA512 SHA512 = SHA512.Create();
+            byte[] Hash = SHA512.ComputeHash(Encoding.UTF8.GetBytes(Input));
+            //convert byte array to string
+            return Convert.ToBase64String(Hash);
+        }
+        public byte[] CreateSalt()
+        {
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] Salt = new byte[8];
+            rng.GetBytes(Salt);
+            return Salt;
+        }
+        public void Register(string Username, string Password)
+        {
+            byte [] Bytesalt = CreateSalt();
+            string Salt = Convert.ToBase64String(Bytesalt);//makes the salt a string
+            string Input = Password + Salt;
+            string Pword = Hash(Input);
+            OleDbCommand command = new OleDbCommand($"INSERT INTO [User](Username,[Password],Salt) VALUES ('{Username}' , '{Pword}','{Salt}')", Connectstring);
             Connectstring.Open();
             command.ExecuteNonQuery();
             Connectstring.Close();
         }
-        public bool Is_Username_Taken()
+        /*public void Register()
         {
-
+            string Password = Register_page.Password;
             string Username = Register_page.Username;
+            OleDbCommand command = new OleDbCommand($"INSERT INTO [User](Username,[Password]) VALUES ('{Username}' , '{Password}')", Connectstring);
+            Connectstring.Open();
+            command.ExecuteNonQuery();
+            Connectstring.Close();
+
+        }*/
+        public bool Is_Username_Taken(string Username, string Password)
+        { 
             OleDbCommand command = new OleDbCommand($"SELECT COUNT(Username) FROM [User] WHERE Username = '{Username}'", Connectstring);
             Connectstring.Open();
             int ID = (int)command.ExecuteScalar();
             Connectstring.Close();
             if (ID == 0)
             {
-                Register();
+                Register(Username,Password);
                 return false;
             }
             else
@@ -47,29 +72,30 @@ namespace Prototype4
                 return true;
             }
         }
-        public void Login(string Username, string Password)//change into a function 
+        public bool Login(string Username, string Password)//change into a function 
         {
-            OleDbCommand command = new OleDbCommand($"SELECT [Password] FROM [User] WHERE Username = '{Username}'", Connectstring);
+            OleDbCommand command = new OleDbCommand($"SELECT * FROM [User] WHERE Username = '{Username}'", Connectstring);
             Connectstring.Open();
             OleDbDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                string Output = reader["Password"].ToString();
-                //Connectstring.Close();
+                string Haspassword = reader["Password"].ToString();
+                string Salt = (string)reader["Salt"];
+                string Input = Password + Salt;
+                string Hashoutput = Hash(Input);
 
-                if (Output == Password)
+                if (Haspassword == Hashoutput)
                 {
                     MessageBox.Show("login ok");
                     Main_page.Username = Username;
-                    Login_page.Valid = true;
+                    return true;
                 }
                 else
                 {
-                    Login_page.Valid = false;
+                    return false;
                 }
-
             }
-            Connectstring.Close();
+            return false;
         }
         public void AddOrder()
         {
