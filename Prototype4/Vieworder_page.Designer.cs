@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Vieworder_price = new System.Windows.Forms.Label();
+            this.Vieworder_payment = new System.Windows.Forms.Button();
             this.Vieworder_percent = new System.Windows.Forms.Label();
             this.Vieworder_Info = new System.Windows.Forms.TextBox();
             this.Vieworder_progressBar = new System.Windows.Forms.ProgressBar();
@@ -42,14 +44,14 @@
             this.Vieworder_save = new System.Windows.Forms.Button();
             this.Vieworder_employee = new System.Windows.Forms.TextBox();
             this.Vieworder_user = new System.Windows.Forms.TextBox();
-            this.Vieworder_payment = new System.Windows.Forms.Button();
-            this.Vieworder_price = new System.Windows.Forms.Label();
+            this.Home_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Home_button);
             this.panel1.Controls.Add(this.Vieworder_price);
             this.panel1.Controls.Add(this.Vieworder_payment);
             this.panel1.Controls.Add(this.Vieworder_percent);
@@ -64,6 +66,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(684, 185);
             this.panel1.TabIndex = 0;
+            // 
+            // Vieworder_price
+            // 
+            this.Vieworder_price.AutoSize = true;
+            this.Vieworder_price.Location = new System.Drawing.Point(184, 148);
+            this.Vieworder_price.Name = "Vieworder_price";
+            this.Vieworder_price.Size = new System.Drawing.Size(31, 13);
+            this.Vieworder_price.TabIndex = 8;
+            this.Vieworder_price.Text = "Price";
+            // 
+            // Vieworder_payment
+            // 
+            this.Vieworder_payment.Enabled = false;
+            this.Vieworder_payment.Location = new System.Drawing.Point(365, 131);
+            this.Vieworder_payment.Name = "Vieworder_payment";
+            this.Vieworder_payment.Size = new System.Drawing.Size(294, 47);
+            this.Vieworder_payment.TabIndex = 1;
+            this.Vieworder_payment.Text = "Pay";
+            this.Vieworder_payment.UseVisualStyleBackColor = true;
+            this.Vieworder_payment.Click += new System.EventHandler(this.Vieworder_payment_Click);
             // 
             // Vieworder_percent
             // 
@@ -195,25 +217,15 @@
             this.Vieworder_user.Size = new System.Drawing.Size(260, 170);
             this.Vieworder_user.TabIndex = 6;
             // 
-            // Vieworder_payment
+            // Home_button
             // 
-            this.Vieworder_payment.Enabled = false;
-            this.Vieworder_payment.Location = new System.Drawing.Point(365, 131);
-            this.Vieworder_payment.Name = "Vieworder_payment";
-            this.Vieworder_payment.Size = new System.Drawing.Size(294, 47);
-            this.Vieworder_payment.TabIndex = 1;
-            this.Vieworder_payment.Text = "Pay";
-            this.Vieworder_payment.UseVisualStyleBackColor = true;
-            this.Vieworder_payment.Click += new System.EventHandler(this.Vieworder_payment_Click);
-            // 
-            // Vieworder_price
-            // 
-            this.Vieworder_price.AutoSize = true;
-            this.Vieworder_price.Location = new System.Drawing.Point(184, 148);
-            this.Vieworder_price.Name = "Vieworder_price";
-            this.Vieworder_price.Size = new System.Drawing.Size(31, 13);
-            this.Vieworder_price.TabIndex = 8;
-            this.Vieworder_price.Text = "Price";
+            this.Home_button.Location = new System.Drawing.Point(3, 3);
+            this.Home_button.Name = "Home_button";
+            this.Home_button.Size = new System.Drawing.Size(170, 29);
+            this.Home_button.TabIndex = 27;
+            this.Home_button.Text = "Home";
+            this.Home_button.UseVisualStyleBackColor = true;
+            this.Home_button.Click += new System.EventHandler(this.Home_button_Click);
             // 
             // Vieworder_page
             // 
@@ -251,5 +263,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Vieworder_price;
         private System.Windows.Forms.Button Vieworder_payment;
+        private System.Windows.Forms.Button Home_button;
     }
 }

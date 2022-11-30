@@ -82,5 +82,12 @@ namespace Prototype4
             Database database = new Database();
             database.AddCommunicatio("Employee_response",Info,OrderID);
         }
+
+        private void Home_button_Click(object sender, EventArgs e)
+        {
+            var Main_page = new Main_page();
+            Main_page.Show();
+            this.Hide();
+        }
     }
 }

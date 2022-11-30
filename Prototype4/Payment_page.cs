@@ -79,6 +79,6 @@ namespace Prototype4
             {
                 MessageBox.Show("One of the fields is not valid");
             }
-        }    
+        }
     }
 }

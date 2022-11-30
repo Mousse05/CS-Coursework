@@ -49,14 +49,15 @@
             this.Button_Back = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Accounting_Price = new System.Windows.Forms.Label();
+            this.Accounting_VAT = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Accounting_Save = new System.Windows.Forms.Button();
+            this.Accouinting_Calculate = new System.Windows.Forms.Button();
             this.Accounting_OrderID = new System.Windows.Forms.TextBox();
             this.Accounting_Hours = new System.Windows.Forms.TextBox();
-            this.Accouinting_Calculate = new System.Windows.Forms.Button();
-            this.Accounting_Save = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Accounting_VAT = new System.Windows.Forms.Label();
-            this.Accounting_Price = new System.Windows.Forms.Label();
+            this.Home_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -277,6 +278,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Home_button);
             this.panel2.Controls.Add(this.Accounting_Price);
             this.panel2.Controls.Add(this.Accounting_VAT);
             this.panel2.Controls.Add(this.label3);
@@ -289,6 +291,62 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(382, 426);
             this.panel2.TabIndex = 17;
+            // 
+            // Accounting_Price
+            // 
+            this.Accounting_Price.AutoSize = true;
+            this.Accounting_Price.Location = new System.Drawing.Point(23, 127);
+            this.Accounting_Price.Name = "Accounting_Price";
+            this.Accounting_Price.Size = new System.Drawing.Size(58, 13);
+            this.Accounting_Price.TabIndex = 26;
+            this.Accounting_Price.Text = "Total Price";
+            // 
+            // Accounting_VAT
+            // 
+            this.Accounting_VAT.AutoSize = true;
+            this.Accounting_VAT.Location = new System.Drawing.Point(23, 98);
+            this.Accounting_VAT.Name = "Accounting_VAT";
+            this.Accounting_VAT.Size = new System.Drawing.Size(67, 13);
+            this.Accounting_VAT.TabIndex = 25;
+            this.Accounting_VAT.Text = "VAT Amount";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "VAT = 20%";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "How many hour spent on project";
+            // 
+            // Accounting_Save
+            // 
+            this.Accounting_Save.Location = new System.Drawing.Point(132, 151);
+            this.Accounting_Save.Name = "Accounting_Save";
+            this.Accounting_Save.Size = new System.Drawing.Size(75, 23);
+            this.Accounting_Save.TabIndex = 22;
+            this.Accounting_Save.Text = "Save";
+            this.Accounting_Save.UseVisualStyleBackColor = true;
+            this.Accounting_Save.Click += new System.EventHandler(this.Accounting_Save_Click);
+            // 
+            // Accouinting_Calculate
+            // 
+            this.Accouinting_Calculate.Location = new System.Drawing.Point(132, 24);
+            this.Accouinting_Calculate.Name = "Accouinting_Calculate";
+            this.Accouinting_Calculate.Size = new System.Drawing.Size(75, 23);
+            this.Accouinting_Calculate.TabIndex = 21;
+            this.Accouinting_Calculate.Text = "Calculate";
+            this.Accouinting_Calculate.UseVisualStyleBackColor = true;
+            this.Accouinting_Calculate.Click += new System.EventHandler(this.Accouinting_Calculate_Click);
             // 
             // Accounting_OrderID
             // 
@@ -304,61 +362,15 @@
             this.Accounting_Hours.Size = new System.Drawing.Size(100, 20);
             this.Accounting_Hours.TabIndex = 20;
             // 
-            // Accouinting_Calculate
+            // Home_button
             // 
-            this.Accouinting_Calculate.Location = new System.Drawing.Point(132, 24);
-            this.Accouinting_Calculate.Name = "Accouinting_Calculate";
-            this.Accouinting_Calculate.Size = new System.Drawing.Size(75, 23);
-            this.Accouinting_Calculate.TabIndex = 21;
-            this.Accouinting_Calculate.Text = "Calculate";
-            this.Accouinting_Calculate.UseVisualStyleBackColor = true;
-            this.Accouinting_Calculate.Click += new System.EventHandler(this.Accouinting_Calculate_Click);
-            // 
-            // Accounting_Save
-            // 
-            this.Accounting_Save.Location = new System.Drawing.Point(132, 151);
-            this.Accounting_Save.Name = "Accounting_Save";
-            this.Accounting_Save.Size = new System.Drawing.Size(75, 23);
-            this.Accounting_Save.TabIndex = 22;
-            this.Accounting_Save.Text = "Save";
-            this.Accounting_Save.UseVisualStyleBackColor = true;
-            this.Accounting_Save.Click += new System.EventHandler(this.Accounting_Save_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "How many hour spent on project";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "VAT = 20%";
-            // 
-            // Accounting_VAT
-            // 
-            this.Accounting_VAT.AutoSize = true;
-            this.Accounting_VAT.Location = new System.Drawing.Point(23, 98);
-            this.Accounting_VAT.Name = "Accounting_VAT";
-            this.Accounting_VAT.Size = new System.Drawing.Size(67, 13);
-            this.Accounting_VAT.TabIndex = 25;
-            this.Accounting_VAT.Text = "VAT Amount";
-            // 
-            // Accounting_Price
-            // 
-            this.Accounting_Price.AutoSize = true;
-            this.Accounting_Price.Location = new System.Drawing.Point(23, 127);
-            this.Accounting_Price.Name = "Accounting_Price";
-            this.Accounting_Price.Size = new System.Drawing.Size(58, 13);
-            this.Accounting_Price.TabIndex = 26;
-            this.Accounting_Price.Text = "Total Price";
+            this.Home_button.Location = new System.Drawing.Point(257, 353);
+            this.Home_button.Name = "Home_button";
+            this.Home_button.Size = new System.Drawing.Size(122, 70);
+            this.Home_button.TabIndex = 18;
+            this.Home_button.Text = "Home";
+            this.Home_button.UseVisualStyleBackColor = true;
+            this.Home_button.Click += new System.EventHandler(this.Button10_Click);
             // 
             // Accounting_page
             // 
@@ -408,5 +420,6 @@
         private System.Windows.Forms.Label Accounting_VAT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Home_button;
     }
 }

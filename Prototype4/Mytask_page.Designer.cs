@@ -54,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Mytask_employeeinfo = new System.Windows.Forms.TextBox();
             this.Mytask_customerinfo = new System.Windows.Forms.TextBox();
+            this.Home_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Mytask_dataGridView)).BeginInit();
             this.Mytask_panelorder.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,7 +68,7 @@
             this.Team_ID,
             this.Order_ID});
             this.Mytask_dataGridView.Location = new System.Drawing.Point(0, 0);
-            this.Mytask_dataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_dataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_dataGridView.Name = "Mytask_dataGridView";
             this.Mytask_dataGridView.RowHeadersWidth = 62;
             this.Mytask_dataGridView.RowTemplate.Height = 28;
@@ -101,6 +102,7 @@
             // Mytask_panelorder
             // 
             this.Mytask_panelorder.AllowDrop = true;
+            this.Mytask_panelorder.Controls.Add(this.Home_button);
             this.Mytask_panelorder.Controls.Add(this.Mytask_info);
             this.Mytask_panelorder.Controls.Add(this.Mytask_delivered);
             this.Mytask_panelorder.Controls.Add(this.Mytask_Accepted);
@@ -109,7 +111,7 @@
             this.Mytask_panelorder.Controls.Add(this.Mytask_OrderID);
             this.Mytask_panelorder.Controls.Add(this.Mytask_search);
             this.Mytask_panelorder.Location = new System.Drawing.Point(547, 0);
-            this.Mytask_panelorder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_panelorder.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_panelorder.Name = "Mytask_panelorder";
             this.Mytask_panelorder.Size = new System.Drawing.Size(391, 160);
             this.Mytask_panelorder.TabIndex = 1;
@@ -117,7 +119,7 @@
             // Mytask_info
             // 
             this.Mytask_info.Location = new System.Drawing.Point(11, 62);
-            this.Mytask_info.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_info.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_info.Multiline = true;
             this.Mytask_info.Name = "Mytask_info";
             this.Mytask_info.ReadOnly = true;
@@ -128,7 +130,7 @@
             // 
             this.Mytask_delivered.AutoSize = true;
             this.Mytask_delivered.Location = new System.Drawing.Point(169, 109);
-            this.Mytask_delivered.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_delivered.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_delivered.Name = "Mytask_delivered";
             this.Mytask_delivered.Size = new System.Drawing.Size(71, 17);
             this.Mytask_delivered.TabIndex = 6;
@@ -139,7 +141,7 @@
             // 
             this.Mytask_Accepted.AutoSize = true;
             this.Mytask_Accepted.Location = new System.Drawing.Point(169, 80);
-            this.Mytask_Accepted.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_Accepted.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_Accepted.Name = "Mytask_Accepted";
             this.Mytask_Accepted.Size = new System.Drawing.Size(72, 17);
             this.Mytask_Accepted.TabIndex = 5;
@@ -169,7 +171,7 @@
             // Mytask_OrderID
             // 
             this.Mytask_OrderID.Location = new System.Drawing.Point(11, 8);
-            this.Mytask_OrderID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_OrderID.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_OrderID.Name = "Mytask_OrderID";
             this.Mytask_OrderID.Size = new System.Drawing.Size(68, 20);
             this.Mytask_OrderID.TabIndex = 1;
@@ -177,7 +179,7 @@
             // Mytask_search
             // 
             this.Mytask_search.Location = new System.Drawing.Point(91, 8);
-            this.Mytask_search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_search.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_search.Name = "Mytask_search";
             this.Mytask_search.Size = new System.Drawing.Size(50, 20);
             this.Mytask_search.TabIndex = 0;
@@ -208,7 +210,7 @@
             // Mytask_save
             // 
             this.Mytask_save.Location = new System.Drawing.Point(10, 268);
-            this.Mytask_save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_save.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_save.Name = "Mytask_save";
             this.Mytask_save.Size = new System.Drawing.Size(182, 32);
             this.Mytask_save.TabIndex = 12;
@@ -229,7 +231,7 @@
             // Mytask_taskID
             // 
             this.Mytask_taskID.Location = new System.Drawing.Point(210, 281);
-            this.Mytask_taskID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_taskID.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_taskID.Name = "Mytask_taskID";
             this.Mytask_taskID.Size = new System.Drawing.Size(81, 20);
             this.Mytask_taskID.TabIndex = 10;
@@ -237,7 +239,7 @@
             // Mytask_Complete
             // 
             this.Mytask_Complete.Location = new System.Drawing.Point(294, 266);
-            this.Mytask_Complete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_Complete.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_Complete.Name = "Mytask_Complete";
             this.Mytask_Complete.Size = new System.Drawing.Size(89, 37);
             this.Mytask_Complete.TabIndex = 3;
@@ -248,7 +250,7 @@
             // Mytask_InfoID
             // 
             this.Mytask_InfoID.Location = new System.Drawing.Point(207, 25);
-            this.Mytask_InfoID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_InfoID.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_InfoID.Name = "Mytask_InfoID";
             this.Mytask_InfoID.Size = new System.Drawing.Size(85, 20);
             this.Mytask_InfoID.TabIndex = 3;
@@ -256,7 +258,7 @@
             // Mytask_refresh
             // 
             this.Mytask_refresh.Location = new System.Drawing.Point(294, 21);
-            this.Mytask_refresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_refresh.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_refresh.Name = "Mytask_refresh";
             this.Mytask_refresh.Size = new System.Drawing.Size(87, 25);
             this.Mytask_refresh.TabIndex = 3;
@@ -277,7 +279,7 @@
             // Mytask_acceptorder
             // 
             this.Mytask_acceptorder.Location = new System.Drawing.Point(108, 21);
-            this.Mytask_acceptorder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_acceptorder.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_acceptorder.Name = "Mytask_acceptorder";
             this.Mytask_acceptorder.Size = new System.Drawing.Size(84, 25);
             this.Mytask_acceptorder.TabIndex = 8;
@@ -288,7 +290,7 @@
             // Mytask_ID
             // 
             this.Mytask_ID.Location = new System.Drawing.Point(10, 25);
-            this.Mytask_ID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_ID.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_ID.Name = "Mytask_ID";
             this.Mytask_ID.Size = new System.Drawing.Size(95, 20);
             this.Mytask_ID.TabIndex = 7;
@@ -316,7 +318,7 @@
             // Mytask_employeeinfo
             // 
             this.Mytask_employeeinfo.Location = new System.Drawing.Point(207, 73);
-            this.Mytask_employeeinfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_employeeinfo.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_employeeinfo.Multiline = true;
             this.Mytask_employeeinfo.Name = "Mytask_employeeinfo";
             this.Mytask_employeeinfo.Size = new System.Drawing.Size(183, 191);
@@ -325,12 +327,22 @@
             // Mytask_customerinfo
             // 
             this.Mytask_customerinfo.Location = new System.Drawing.Point(9, 73);
-            this.Mytask_customerinfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Mytask_customerinfo.Margin = new System.Windows.Forms.Padding(2);
             this.Mytask_customerinfo.Multiline = true;
             this.Mytask_customerinfo.Name = "Mytask_customerinfo";
             this.Mytask_customerinfo.ReadOnly = true;
             this.Mytask_customerinfo.Size = new System.Drawing.Size(184, 191);
             this.Mytask_customerinfo.TabIndex = 3;
+            // 
+            // Home_button
+            // 
+            this.Home_button.Location = new System.Drawing.Point(294, 8);
+            this.Home_button.Name = "Home_button";
+            this.Home_button.Size = new System.Drawing.Size(97, 38);
+            this.Home_button.TabIndex = 22;
+            this.Home_button.Text = "Home";
+            this.Home_button.UseVisualStyleBackColor = true;
+            this.Home_button.Click += new System.EventHandler(this.Home_button_Click);
             // 
             // Mytask_page
             // 
@@ -340,7 +352,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Mytask_panelorder);
             this.Controls.Add(this.Mytask_dataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Mytask_page";
             this.Text = "Mytask_page";
             ((System.ComponentModel.ISupportInitialize)(this.Mytask_dataGridView)).EndInit();
@@ -380,5 +392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Team_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_ID;
         private System.Windows.Forms.Button Mytask_save;
+        private System.Windows.Forms.Button Home_button;
     }
 }

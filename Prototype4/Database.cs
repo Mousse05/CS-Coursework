@@ -21,7 +21,6 @@ namespace Prototype4
         public string Hash(string Input)
         {
             // Generate the hash
-            //Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes.create//(input, salt, iterations: 5000);
             SHA512 SHA512 = SHA512.Create();
             byte[] Hash = SHA512.ComputeHash(Encoding.UTF8.GetBytes(Input));
             //convert byte array to string
@@ -30,7 +29,7 @@ namespace Prototype4
         public byte[] CreateSalt()
         {
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            byte[] Salt = new byte[8];
+            byte[] Salt = new byte[32];
             rng.GetBytes(Salt);
             return Salt;
         }
@@ -45,16 +44,6 @@ namespace Prototype4
             command.ExecuteNonQuery();
             Connectstring.Close();
         }
-        /*public void Register()
-        {
-            string Password = Register_page.Password;
-            string Username = Register_page.Username;
-            OleDbCommand command = new OleDbCommand($"INSERT INTO [User](Username,[Password]) VALUES ('{Username}' , '{Password}')", Connectstring);
-            Connectstring.Open();
-            command.ExecuteNonQuery();
-            Connectstring.Close();
-
-        }*/
         public bool Is_Username_Taken(string Username, string Password)
         { 
             OleDbCommand command = new OleDbCommand($"SELECT COUNT(Username) FROM [User] WHERE Username = '{Username}'", Connectstring);
@@ -397,6 +386,10 @@ namespace Prototype4
             }
             Connectstring.Close();
             return priority;
+        }
+        public bool IntTextBox(string Input)
+        {
+            return false;
         }
     }
 }

@@ -41,5 +41,12 @@ namespace Prototype4
             Database Update = new Database();
             Update.UpdateInfo();
         }
+
+        private void Home_button_Click(object sender, EventArgs e)
+        {
+            var Main_page = new Main_page();
+            Main_page.Show();
+            this.Hide();
+        }
     }
 }

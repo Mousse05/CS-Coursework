@@ -85,5 +85,12 @@ namespace Prototype4
                 Management_datagrid.Rows.Add(AddToDGV[i]);//adds the jagged array to the datagridview
             }
         }
+
+        private void Home_button_Click(object sender, EventArgs e)
+        {
+            var Main_page = new Main_page();
+            Main_page.Show();
+            this.Hide();
+        }
     }
 }

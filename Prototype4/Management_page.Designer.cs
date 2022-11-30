@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.Management_datagrid = new System.Windows.Forms.DataGridView();
-            this.Management_save = new System.Windows.Forms.Button();
-            this.Managemnet_comboBox = new System.Windows.Forms.ComboBox();
             this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Team_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Order_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +37,9 @@
             this.Order_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accepted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Delivered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Management_save = new System.Windows.Forms.Button();
+            this.Managemnet_comboBox = new System.Windows.Forms.ComboBox();
+            this.Home_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Management_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,34 +58,12 @@
             this.Accepted,
             this.Delivered});
             this.Management_datagrid.Location = new System.Drawing.Point(0, 0);
+            this.Management_datagrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Management_datagrid.Name = "Management_datagrid";
             this.Management_datagrid.RowHeadersWidth = 62;
             this.Management_datagrid.RowTemplate.Height = 28;
-            this.Management_datagrid.Size = new System.Drawing.Size(1311, 546);
+            this.Management_datagrid.Size = new System.Drawing.Size(874, 355);
             this.Management_datagrid.TabIndex = 0;
-            // 
-            // Management_save
-            // 
-            this.Management_save.Location = new System.Drawing.Point(16, 552);
-            this.Management_save.Name = "Management_save";
-            this.Management_save.Size = new System.Drawing.Size(86, 42);
-            this.Management_save.TabIndex = 1;
-            this.Management_save.Text = "Save";
-            this.Management_save.UseVisualStyleBackColor = true;
-            this.Management_save.Click += new System.EventHandler(this.Management_save_Click);
-            // 
-            // Managemnet_comboBox
-            // 
-            this.Managemnet_comboBox.FormattingEnabled = true;
-            this.Managemnet_comboBox.Items.AddRange(new object[] {
-            "Order",
-            "Tasks",
-            "Teams"});
-            this.Managemnet_comboBox.Location = new System.Drawing.Point(121, 560);
-            this.Managemnet_comboBox.Name = "Managemnet_comboBox";
-            this.Managemnet_comboBox.Size = new System.Drawing.Size(147, 28);
-            this.Managemnet_comboBox.TabIndex = 2;
-            this.Managemnet_comboBox.SelectedIndexChanged += new System.EventHandler(this.Managemnet_comboBox_SelectedIndexChanged);
             // 
             // Task
             // 
@@ -146,15 +125,50 @@
             this.Delivered.Name = "Delivered";
             this.Delivered.Width = 80;
             // 
+            // Management_save
+            // 
+            this.Management_save.Location = new System.Drawing.Point(11, 359);
+            this.Management_save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Management_save.Name = "Management_save";
+            this.Management_save.Size = new System.Drawing.Size(57, 27);
+            this.Management_save.TabIndex = 1;
+            this.Management_save.Text = "Save";
+            this.Management_save.UseVisualStyleBackColor = true;
+            this.Management_save.Click += new System.EventHandler(this.Management_save_Click);
+            // 
+            // Managemnet_comboBox
+            // 
+            this.Managemnet_comboBox.FormattingEnabled = true;
+            this.Managemnet_comboBox.Items.AddRange(new object[] {
+            "Order",
+            "Tasks",
+            "Teams"});
+            this.Managemnet_comboBox.Location = new System.Drawing.Point(81, 364);
+            this.Managemnet_comboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Managemnet_comboBox.Name = "Managemnet_comboBox";
+            this.Managemnet_comboBox.Size = new System.Drawing.Size(99, 21);
+            this.Managemnet_comboBox.TabIndex = 2;
+            this.Managemnet_comboBox.SelectedIndexChanged += new System.EventHandler(this.Managemnet_comboBox_SelectedIndexChanged);
+            // 
+            // Home_button
+            // 
+            this.Home_button.Location = new System.Drawing.Point(756, 359);
+            this.Home_button.Name = "Home_button";
+            this.Home_button.Size = new System.Drawing.Size(118, 43);
+            this.Home_button.TabIndex = 21;
+            this.Home_button.Text = "Home";
+            this.Home_button.UseVisualStyleBackColor = true;
+            this.Home_button.Click += new System.EventHandler(this.Home_button_Click);
+            // 
             // Management_page
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1347, 692);
+            this.ClientSize = new System.Drawing.Size(898, 450);
+            this.Controls.Add(this.Home_button);
             this.Controls.Add(this.Managemnet_comboBox);
             this.Controls.Add(this.Management_save);
             this.Controls.Add(this.Management_datagrid);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Management_page";
             this.Text = "Management_page";
             ((System.ComponentModel.ISupportInitialize)(this.Management_datagrid)).EndInit();
@@ -175,5 +189,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_date;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Accepted;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Delivered;
+        private System.Windows.Forms.Button Home_button;
     }
 }

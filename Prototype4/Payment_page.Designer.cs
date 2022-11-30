@@ -134,7 +134,7 @@
             // Payment_price
             // 
             this.Payment_price.AutoSize = true;
-            this.Payment_price.Font = new System.Drawing.Font("Microsoft SOutput Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Payment_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Payment_price.Location = new System.Drawing.Point(15, 282);
             this.Payment_price.Name = "Payment_price";
             this.Payment_price.Size = new System.Drawing.Size(44, 20);

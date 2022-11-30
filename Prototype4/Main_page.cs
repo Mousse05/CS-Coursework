@@ -12,7 +12,7 @@ namespace Prototype4
 {
     public partial class Main_page : Form
     {
-        public int Priority = 0;
+        public int Priority = 3;
         static public string Username = null;
         public Main_page()
         {
