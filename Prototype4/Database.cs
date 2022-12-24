@@ -33,18 +33,18 @@ namespace Prototype4
             rng.GetBytes(Salt);
             return Salt;
         }
-        public void Register(string Username, string Password)
+        public void Register(string Username, string Password, int Priority)
         {
             byte [] Bytesalt = CreateSalt();
             string Salt = Convert.ToBase64String(Bytesalt);//makes the salt a string
             string Input = Password + Salt;
             string Pword = Hash(Input);
-            OleDbCommand command = new OleDbCommand($"INSERT INTO [User](Username,[Password],Salt) VALUES ('{Username}' , '{Pword}','{Salt}')", Connectstring);
+            OleDbCommand command = new OleDbCommand($"INSERT INTO [User](Username,[Password],Salt,Priority) VALUES ('{Username}' , '{Pword}','{Salt}',{Priority})", Connectstring);
             Connectstring.Open();
             command.ExecuteNonQuery();
             Connectstring.Close();
         }
-        public bool Is_Username_Taken(string Username, string Password)
+        public bool Is_Username_Taken(string Username, string Password, int Priority)
         { 
             OleDbCommand command = new OleDbCommand($"SELECT COUNT(Username) FROM [User] WHERE Username = '{Username}'", Connectstring);
             Connectstring.Open();
@@ -52,7 +52,7 @@ namespace Prototype4
             Connectstring.Close();
             if (ID == 0)
             {
-                Register(Username,Password);
+                Register(Username,Password,Priority);
                 return false;
             }
             else
@@ -64,41 +64,55 @@ namespace Prototype4
         public bool Login(string Username, string Password)//change into a function 
         {
             OleDbCommand command = new OleDbCommand($"SELECT * FROM [User] WHERE Username = '{Username}'", Connectstring);
-            Connectstring.Open();
-            OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                string Haspassword = reader["Password"].ToString();
-                string Salt = (string)reader["Salt"];
-                string Input = Password + Salt;
-                string Hashoutput = Hash(Input);
+                Connectstring.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string Haspassword = reader["Password"].ToString();
+                    string Salt = (string)reader["Salt"];
+                    string Input = Password + Salt;
+                    string Hashoutput = Hash(Input);
 
-                if (Haspassword == Hashoutput)
-                {
-                    MessageBox.Show("login ok");
-                    Main_page.Username = Username;
-                    return true;
+                    if (Haspassword == Hashoutput)
+                    {
+                        MessageBox.Show("login ok");
+                        Main_page.Username = Username;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
-            return false;
-        }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+            finally
+            {
+                Connectstring.Close();
+            }
+        } 
         public void AddOrder()
         {
             string Email = Order_page.Email;
             string Info = Order_page.Info;
             DateTime Time = Order_page.Time;
             int ID = GetUserID(Login_page.Username);
-            OleDbCommand command = new OleDbCommand($"INSERT INTO [Order](User_ID,info,Order_date,Percent ) VALUES ({ID},'{Info}', '{Time}',{0})", Connectstring);
+            OleDbCommand command = new OleDbCommand($"INSERT INTO [Order] (User_ID,Info,Order_date,[Percent]) VALUES ({ID},'{Info}', '{Time}',{0})", Connectstring);
             OleDbCommand command1 = new OleDbCommand($"UPDATE [User] SET [Email] = '{Email}' WHERE User_ID = {ID}", Connectstring);
             Connectstring.Open();
             command.ExecuteNonQuery();
             command1.ExecuteNonQuery();
+            Connectstring.Close();
             int OrderID = GetUserID(Login_page.Username);//change it broken
             OleDbCommand command2 = new OleDbCommand($"INSERT INTO [Tasks] (Team_ID,Order_ID) VALUES ({1},'{OrderID}')", Connectstring);
+            Connectstring.Open();
             command2.ExecuteNonQuery();
             Connectstring.Close();
         }
@@ -172,7 +186,7 @@ namespace Prototype4
             Connectstring.Open();
             command.ExecuteNonQuery();
             Connectstring.Close();
-        }
+        }      
         public void UpdateTable(object[][] AddToDatabase, string[] CoulmnName, string Table)
         {
             Connectstring.Open();
@@ -224,7 +238,14 @@ namespace Prototype4
             {
                 Settings_page.Username = reader.GetString(1);
                 Settings_page.Password = reader.GetString(2);
-                Settings_page.Email = reader.GetString(3);
+                if (reader[3] == null)
+                {
+                    Settings_page.Email = "";
+                }
+                else
+                {
+                    Settings_page.Email = reader[3].ToString();
+                }
                 Settings_page.Priority = reader[4].ToString();
             }
             Connectstring.Close();
@@ -264,11 +285,12 @@ namespace Prototype4
             int rowcount = (int)command1.ExecuteScalar();
             int i = 0;
             object[][] AddToDGV = new object[rowcount][];//jagged arry to store the whole table form the databse 
-            //array for row that is being looked at
+            
             try
             {
                 while (reader.Read())
                 {//adds the valuse form a row to the AddToArray array 
+                    //array for row that is being looked at
                     object[] AddToArray = new object[ColumnName.Length];
                     for (int j = 0; j < ColumnName.Length; j++)
                     {
@@ -387,9 +409,22 @@ namespace Prototype4
             Connectstring.Close();
             return priority;
         }
-        public bool IntTextBox(string Input)
+        public bool OrderExist()
         {
-            return false;
+            string Username = Login_page.Username;
+            int ID = GetUserID(Username);
+            OleDbCommand command = new OleDbCommand($"SELECT COUNT(User_ID) FROM [User] WHERE User_ID = {ID}", Connectstring);
+            Connectstring.Open();
+            int Count = (int)command.ExecuteScalar();
+            Connectstring.Close();
+            if (Count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

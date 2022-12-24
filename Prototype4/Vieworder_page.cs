@@ -31,7 +31,8 @@ namespace Prototype4
             {
                 Vieworder_payment.Enabled = true;
             }
-            
+
+            Vieworder_Info.Text = (string)Order[2];
             Vieworder_Orderdate.Text = " Date of order :" + Order[3].ToString();
             Vieworder_Accepted.Checked = (bool)Order[4];
             Vieworder_Delivered.Checked = (bool)Order[5];

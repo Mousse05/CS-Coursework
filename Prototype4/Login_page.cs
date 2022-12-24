@@ -63,5 +63,15 @@ namespace Prototype4
             Main_page.Show();
             this.Hide();
         }
+
+        private void Login_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

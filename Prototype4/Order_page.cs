@@ -38,6 +38,9 @@ namespace Prototype4
                 Time = DateTime.Now;
                 Database AddOrder = new Database();
                 AddOrder.AddOrder();
+                var Main_page = new Main_page();
+                Main_page.Show();
+                this.Hide();
             }
         }
 

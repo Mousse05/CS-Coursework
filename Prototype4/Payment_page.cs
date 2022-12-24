@@ -80,5 +80,12 @@ namespace Prototype4
                 MessageBox.Show("One of the fields is not valid");
             }
         }
+
+        private void Home_button_Click(object sender, EventArgs e)
+        {
+            var Main_page = new Main_page();
+            Main_page.Show();
+            this.Hide();
+        }
     }
 }

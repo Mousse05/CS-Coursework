@@ -12,22 +12,30 @@ namespace Prototype4
 {
     public partial class Main_page : Form
     {
-        public int Priority = 3;
+        public int Priority = 0;
         static public string Username = null;
         public Main_page()
         {
             InitializeComponent();
+
         }
         /* prioery levels 
         1 is for clients 
         2 is for designers and developers
         3 is for managers
-        4 is for acounts team
         4 is for IT
+        5 is for acounts team
         */
         private void Main_page_Load(object sender, EventArgs e)
         {
-           if (Priority == 1)
+            if (Username != null)
+            {
+                Main_login.Text = "Settings";
+                Main_Welcome.Text = "welcome \n" + Username;
+                Database database = new Database();
+                Priority = database.GetPriority();
+            }
+            if (Priority == 1)
             {
                 Main_management.Visible = false;
                 Main_Mytasks.Text = "My Order";
@@ -36,22 +44,15 @@ namespace Prototype4
             {
                 Main_management.Visible = true;
             }
-            else if (Priority == 4)
+            else if (Priority == 5)
             {
                 Main_management.Text = "Acounting";
-            }
-            if (Username != null)
-            {
-                Main_login.Text = "Settings";
-                Main_Welcome.Text = "welcome \n" + Username;
-                Database database = new Database();
-                Priority = database.GetPriority();
             }
         }
 
         private void Main_management_Click(object sender, EventArgs e)
         {
-            if (Priority == 4)
+            if (Priority == 5)
             {
                 var Accounting_page = new Accounting_page();
                 Accounting_page.Show();
@@ -71,11 +72,20 @@ namespace Prototype4
 
         private void Main_order_Click(object sender, EventArgs e)
         {
+            Database database = new Database();
             if (Priority == 1)
             {
-                var Order_page = new Order_page();//
-                Order_page.Show();//opens the order page form
-                this.Hide();// hides the main form 
+                bool Exist = database.OrderExist();
+                if ( Exist == true)
+                {
+                    MessageBox.Show("Only one order per user");
+                }
+                else
+                {
+                    var Order_page = new Order_page();//
+                    Order_page.Show();//opens the order page form
+                    this.Hide();// hides the main form 
+                }
             }
             else
             {
@@ -103,7 +113,7 @@ namespace Prototype4
 
         private void Main_IT_Click(object sender, EventArgs e)
         {
-            if (Priority == 5)
+            if (Priority == 4)
             {
                 var IT_page = new IT_page();
                 IT_page.Show();
@@ -134,9 +144,14 @@ namespace Prototype4
                 Mytask_page.Show();
                 this.Hide();
             }
+        }
 
-
-
+        private void Main_page_Shown(object sender, EventArgs e)
+        {
+            if (Priority == 0)
+            {
+                MessageBox.Show("login please");
+            }
         }
     }
 }

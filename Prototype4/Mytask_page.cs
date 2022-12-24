@@ -29,10 +29,18 @@ namespace Prototype4
             object[][] AddToDGV = (object[][])database.GetValues("Tasks",ColumnName,TeamID);
 
             //Adds the Jagged Array to the Datagridview
-            for (int i = 0; i < AddToDGV.Length; i++)
+            if (AddToDGV [0] == null)
             {
-                Mytask_dataGridView.Rows.Add(AddToDGV[i]);//adds the jagged array to the datagridview
+                MessageBox.Show("you have no tasks");
             }
+            else
+            {
+                for (int i = 0; i < AddToDGV.Length; i++)
+                {
+                Mytask_dataGridView.Rows.Add(AddToDGV[i]);//adds the jagged array to the datagridview
+                } 
+            }
+
         }
 
         private void Mytask_search_Click(object sender, EventArgs e)

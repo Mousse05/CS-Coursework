@@ -18,21 +18,26 @@ namespace Prototype4
         }
         private void Management_save_Click(object sender, EventArgs e)
         {
-            string[] ColumName= new string[Management_datagrid.ColumnCount];// sets size of array to howmany columns their are
+            // sets size of array to howmany columns their are
+            string[] ColumName= new string[Management_datagrid.ColumnCount];
             for (int i = 0; i < ColumName.Length; i++)
             {
-                ColumName[i] = Management_datagrid.Columns[i].Name;//adds the names of the columns form the datagridview to the array
+                //adds the names of the columns form the datagridview to the array
+                ColumName[i] = Management_datagrid.Columns[i].Name;
             }
-
-            object[][] AddToDatabase = new object[Management_datagrid.Rows.Count][]; //inisalises the jagged array and set its size to how many rows thier are in  the datagridview.
+            //inisalises the jagged array and set its size to how many rows thier are in  the datagridview.
+            object[][] AddToDatabase = new object[Management_datagrid.Rows.Count][]; 
             for (int rows = 0; rows < AddToDatabase.Length; rows++)
             {
-                object[] AddToArray = new object[Management_datagrid.ColumnCount];//inisalises the array and set its size to how many columns thier are in  the datagridview.
+                //inisalises the array and set its size to how many columns thier are in  the datagridview.
+                object[] AddToArray = new object[Management_datagrid.ColumnCount];
                 for (int i = 0; i < AddToArray.Length; i++)
                 {
-                    AddToArray[i] = Management_datagrid.Rows[rows].Cells[i].Value;//adds the valuse form a row to the AddToArray array  
+                    //adds the valuse form a row to the AddToArray array
+                    AddToArray[i] = Management_datagrid.Rows[rows].Cells[i].Value;  
                 }
-                AddToDatabase[rows] = AddToArray;//adds the array to jagged array
+                //adds the array to jagged array
+                AddToDatabase[rows] = AddToArray;
             }
             string Tablename = Managemnet_comboBox.Text;
             Database database = new Database();
